@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
     'storages',
+    
+    'whitenoise.runserver_nostatic',    
 ]
 
 REST_FRAMEWORK = {
@@ -61,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Ecommerce.urls'
@@ -158,6 +161,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'static/images/')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+# STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
