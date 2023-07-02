@@ -145,8 +145,8 @@ EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "emailsender088@gmail.com"
-EMAIL_HOST_PASSWORD = 'wnsyafidzhwcfpxu'
+EMAIL_HOST_USER = os.getenv("HOST_USERID")
+EMAIL_HOST_PASSWORD = os.getenv("HOSTPWD")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -170,8 +170,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_S3_ACCESS_KEY_ID = 'AKIATIGASAXHWVJ6HVHK'
-AWS_S3_SECRET_ACCESS_KEY = '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'
+AWS_S3_ACCESS_KEY_ID = os.getenv('ACCESS_KEY')
+AWS_S3_SECRET_ACCESS_KEY = os.getenv('SECRET_KEY')
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 AWS_STORAGE_BUCKET_NAME = 'devsearchprojectbucket'
