@@ -24,8 +24,8 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('',include('users.urls')),
-    path('api/',include('api.urls')),
     path('projects/',include("Projects.urls")),
+    path('api/',include('api.urls')),
     path('reset_password/',auth_views.PasswordResetView.as_view(template_name="users/reset_password.html"),name="reset_password"),
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(template_name="users/reset_password_sent.html"),name="password_reset_done"),
     path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name="users/reset.html"),name="password_reset_confirm"),
