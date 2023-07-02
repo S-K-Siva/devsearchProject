@@ -1,0 +1,9 @@
+{% extends 'main.html' %} 
+{% block content %} 
+<form method="POST">
+    {% csrf_token %}
+    <p>Are u sure to delete {{project.title}}?</p>
+    <button type="submit" name="sure" value="submit">Submit</button>
+    <button  onclick="window.history.back()">Cancel</button>
+</form>
+{% endblock content %}
