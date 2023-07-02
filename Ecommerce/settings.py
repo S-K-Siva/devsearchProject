@@ -45,9 +45,8 @@ INSTALLED_APPS = [
     "corsheaders",
     'storages',
     
-    'whitenoise.runserver_nostatic',    
 ]
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -55,8 +54,8 @@ REST_FRAMEWORK = {
 }
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -153,14 +152,16 @@ EMAIL_HOST_PASSWORD = 'wnsyafidzhwcfpxu'
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
+
+
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/images/')
 
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+
+# STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -174,4 +175,8 @@ AWS_S3_SECRET_ACCESS_KEY = 'bZJgQOuPwfsSz2xKDPXIj8FimWwE/YWotf3QjS8y'
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 AWS_STORAGE_BUCKET_NAME = 'devsearchprojectbucket'
-
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+S3_STATIC_DIR = 'static'
+STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}/{S3_STATIC_DIR}/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
