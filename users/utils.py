@@ -15,6 +15,7 @@ def searchProfiles(request):
 
 
 def getPagination(request,profiles):
+    profiles = profiles
     page = 1
     if request.GET.get('page'):
         page = request.GET.get('page')
@@ -26,6 +27,7 @@ def getPagination(request,profiles):
         page = 1
         profiles = paginator.page(page)
     except EmptyPage:
+        
         profiles = paginator.page(paginator.num_pages + 1)
     
     leftIndex = int(page) - 2

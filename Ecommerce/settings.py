@@ -150,11 +150,12 @@ EMAIL_HOST_PASSWORD = 'wnsyafidzhwcfpxu'
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/images/'
-STATICFILES_DIRS = [
-    BASE_DIR/'static',
-]
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/images/')
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -168,5 +169,3 @@ AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 AWS_STORAGE_BUCKET_NAME = 'devsearchprojectbucket'
 
-if os.getcwd() == '/app':
-    DEBUG = False
