@@ -36,14 +36,6 @@ def createProject(request):
     if request.method == "POST":
         form = ProjectForm(request.POST,request.FILES)
         if form.is_valid():
-            # form.save()
-            # project = form.save(commit=False)
-            # tags = list(request.POST.get('new_tag').strip().split(','))
-            # if tags[0] != "" :
-            #     for tag in tags:
-            #         tag, created = Tags.objects.get_or_create(name=tag)
-            #         project.tags.add(tag)
-            
             project = form.save(commit=False)
             tagList = Project(title=project.title,id=project.id,author=request.user,description=project.description,demo_link=project.demo_link,source_link=project.source_link,votes_count=project.votes_count,votes_ratio=project.votes_ratio)
             tagList.save()

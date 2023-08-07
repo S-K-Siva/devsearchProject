@@ -67,3 +67,4 @@ class Review(models.Model):
     
 
 
+models.OneToOneField
